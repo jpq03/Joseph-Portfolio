@@ -1,5 +1,7 @@
 # Joseph Quisido - UI/UX Designer Portfolio
 
+![Compilation of Projects](images/hero-mockup.png)
+
 A modern, responsive portfolio website for a UI/UX designer showcasing projects, skills, and experience.
 
 ## �� Features
