@@ -16,11 +16,11 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // Active Navigation Link on Scroll
 window.addEventListener('scroll', () => {
     let current = '';
-
+    
     document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-
+        
         if (scrollY >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
@@ -35,14 +35,14 @@ window.addEventListener('scroll', () => {
 });
 
 // Contact Form Handler
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-
+    
     // Get form values
     const name = this.querySelector('input[type="text"]').value;
     const email = this.querySelector('input[type="email"]').value;
     const message = this.querySelector('textarea').value;
-
+    
     // Basic validation
     if (name && email && message) {
         // You can add your form submission logic here
@@ -55,7 +55,7 @@ document.querySelector('.contact-form').addEventListener('submit', function (e) 
 
 // Smooth Scroll Behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -70,7 +70,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Keyboard Shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.altKey) {
-        switch (e.key.toUpperCase()) {
+        switch(e.key.toUpperCase()) {
             case 'H':
                 document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
                 break;
@@ -115,11 +115,11 @@ document.querySelectorAll('.btn').forEach(btn => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-
+        
         btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
         btn.style.transition = 'transform 0.1s ease-out, background-color 0.3s ease, box-shadow 0.3s ease';
     });
-
+    
     btn.addEventListener('mouseleave', () => {
         btn.style.transform = 'translate(0px, 0px)';
         btn.style.transition = 'all 0.3s ease';
@@ -151,8 +151,12 @@ const botResponses = {
     "projects": "Joseph has worked on exciting projects like EcoTrade, Dealogikal, and Knottical Power Energy. You can check them out in the Projects section!",
     "contact": "You can email Joseph at Quisidojoseph23@gmail.com or call him at 09956705968.",
     "experience": "Joseph has over 1 year of experience in digital product design.",
-    "resume": "You can view more of his background in the 'About' section, or contact him for a full resume.",
-    "default": "I'm a simple AI. I might not understand everything, but you can ask me about Joseph's skills, projects, or contact info!"
+    "resume": "You can view my background in the 'About' section, or contact me directly for a full PDF resume!",
+    "hobbies": "Outside of design, Joseph enjoys photography, digital art, and exploring the latest trends in technology and product design.",
+    "available": "I am currently open to new opportunities and freelance projects! Use the contact form to reach out.",
+    "process": "My design process follows: Research ➔ Wireframing ➔ Prototyping ➔ Testing ➔ Final Design.",
+    "figma": "Figma is my primary tool for UI design and prototyping, but I'm also proficient in Adobe XD and Sketch.",
+    "default": "I'm not sure about that. Try asking about my skills, projects, contact info, or my design process!"
 };
 
 function addMessage(message, sender) {
@@ -169,12 +173,12 @@ function handleSend() {
     if (text) {
         addMessage(text, 'user');
         chatbotInput.value = '';
-
+        
         // Bot thinking delay
         setTimeout(() => {
             const lowerText = text.toLowerCase();
             let response = botResponses["default"];
-
+            
             for (const key in botResponses) {
                 if (lowerText.includes(key)) {
                     response = botResponses[key];
@@ -203,7 +207,7 @@ if (currentTheme) {
 
 themeSwitch.addEventListener('click', () => {
     let theme = document.documentElement.getAttribute('data-theme');
-
+    
     if (theme === 'light') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'dark');
