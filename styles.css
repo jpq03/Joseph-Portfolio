@@ -812,3 +812,190 @@ body {
         right: -10px;
     }
 }
+
+/* Dark/Light Mode Styles */
+:root {
+    --primary-color: #06b6d4;
+    --bg-main: #000000;
+    --bg-alt: #111111;
+    --bg-card: rgba(34, 34, 34, 0.6);
+    --text-main: #FFFFFF;
+    --text-muted: #AAAAAA;
+    --border-color: #333333;
+    --nav-bg: rgba(17, 17, 17, 0.8);
+}
+
+[data-theme="light"] {
+    --primary-color: #0ea5e9;
+    --bg-main: #f8fafc;
+    --bg-alt: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-color: #e2e8f0;
+    --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+.theme-switch {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    margin-left: 2rem;
+    transition: color 0.3s;
+}
+
+.theme-switch:hover {
+    color: var(--primary-color);
+}
+
+[data-theme="light"] .theme-switch {
+    color: var(--text-main);
+}
+
+.theme-switch .sun-icon {
+    display: none;
+}
+
+[data-theme="light"] .theme-switch .sun-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-switch .moon-icon {
+    display: none;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] body,
+[data-theme="light"] .hero,
+[data-theme="light"] .projects,
+[data-theme="light"] .contact,
+[data-theme="light"] .footer {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+[data-theme="light"] .about,
+[data-theme="light"] .skills {
+    background-color: var(--bg-alt);
+}
+
+[data-theme="light"] .navbar {
+    background-color: var(--nav-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="light"] .nav-menu {
+    background-color: var(--bg-alt);
+    border-color: var(--border-color);
+}
+
+[data-theme="light"] .nav-logo a,
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active,
+[data-theme="light"] .hero-content h1,
+[data-theme="light"] .about h2,
+[data-theme="light"] .projects h2,
+[data-theme="light"] .skills h2,
+[data-theme="light"] .contact h2,
+[data-theme="light"] .stat h3,
+[data-theme="light"] .project-info h3,
+[data-theme="light"] .skill-category h3,
+[data-theme="light"] .info-item h4,
+[data-theme="light"] .social-links h4,
+[data-theme="light"] .socials a,
+[data-theme="light"] .btn-secondary:hover {
+    color: var(--text-main);
+}
+
+[data-theme="light"] .nav-link,
+[data-theme="light"] .about-text,
+[data-theme="light"] .stat p,
+[data-theme="light"] .project-info p,
+[data-theme="light"] .skill-category li,
+[data-theme="light"] .contact-intro,
+[data-theme="light"] .info-item p,
+[data-theme="light"] .footer p {
+    color: var(--text-muted);
+}
+
+[data-theme="light"] .stat,
+[data-theme="light"] .project-card,
+[data-theme="light"] .skill-category {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .project-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+[data-theme="light"] .btn-secondary {
+    color: var(--text-main);
+    border-color: var(--text-main);
+}
+
+[data-theme="light"] .hamburger span {
+    background-color: var(--text-main);
+}
+
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    background-color: var(--bg-alt);
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+[data-theme="light"] .socials a {
+    background-color: var(--bg-alt);
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+[data-theme="light"] .socials a:hover {
+    background-color: var(--bg-main);
+}
+
+[data-theme="light"] .tag {
+    background-color: var(--bg-main);
+    color: var(--text-muted);
+    border-color: var(--border-color);
+}
+
+[data-theme="light"] .chatbot-container,
+[data-theme="light"] .chatbot-input,
+[data-theme="light"] .chatbot-header {
+    background-color: var(--bg-alt);
+    border-color: var(--border-color);
+}
+
+[data-theme="light"] .chatbot-header h3 {
+    color: var(--text-main);
+}
+
+[data-theme="light"] #chatbot-input-field {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    border-color: var(--border-color);
+}
+
+[data-theme="light"] .bot-message {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+    .theme-switch {
+        margin-left: auto;
+        margin-right: 1.5rem;
+    }
+}
