@@ -34,24 +34,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Contact Form Handler
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Get form values
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
-
-    // Basic validation
-    if (name && email && message) {
-        // You can add your form submission logic here
-        alert(`Thank you ${name}! I've received your message and will get back to you soon.`);
-        this.reset();
-    } else {
-        alert('Please fill in all fields');
-    }
-});
+// Contact form is handled by Formspree via HTML action attribute.
 
 // Smooth Scroll Behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
