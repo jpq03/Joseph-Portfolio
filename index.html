@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="custom-cursor-active">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -53,7 +56,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero reveal">
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Hi, I'm Joseph Ivan P. Quisido Jr.</h1>
@@ -72,7 +75,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about reveal">
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
@@ -107,7 +110,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects reveal">
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
@@ -163,7 +166,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills reveal">
         <div class="container">
             <h2>My Skills</h2>
             <div class="skills-grid">
@@ -208,7 +211,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact reveal">
         <div class="container">
             <h2>Get In Touch</h2>
             <p class="contact-intro">Have a project in mind? Let's create something amazing together!</p>
@@ -315,6 +318,21 @@
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div id="modal-body">
+                <!-- Content injected via JS -->
             </div>
         </div>
     </div>
