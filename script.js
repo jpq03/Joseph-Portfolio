@@ -168,14 +168,31 @@ function addMessage(message, sender) {
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
 
-function handleSend() {
-    const text = chatbotInput.value.trim();
+function showTypingIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'typing-indicator';
+    indicator.id = 'typing-indicator';
+    indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    chatbotMessages.appendChild(indicator);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    return indicator;
+}
+
+function handleSend(overrideText) {
+    const text = typeof overrideText === 'string' ? overrideText : chatbotInput.value.trim();
     if (text) {
-        addMessage(text, 'user');
-        chatbotInput.value = '';
+        if (typeof overrideText !== 'string') {
+            addMessage(text, 'user');
+            chatbotInput.value = '';
+        } else {
+            addMessage(text, 'user');
+        }
+        
+        const indicator = showTypingIndicator();
         
         // Bot thinking delay
         setTimeout(() => {
+            indicator.remove();
             const lowerText = text.toLowerCase();
             let response = botResponses["default"];
             
@@ -186,9 +203,16 @@ function handleSend() {
                 }
             }
             addMessage(response, 'bot');
-        }, 600);
+        }, 1000);
     }
 }
+
+// Suggestion Chips
+document.querySelectorAll('.suggestion-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+        handleSend(chip.textContent);
+    });
+});
 
 chatbotSendBtn.addEventListener('click', handleSend);
 chatbotInput.addEventListener('keypress', (e) => {
