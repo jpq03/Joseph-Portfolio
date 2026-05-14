@@ -156,6 +156,8 @@ const botResponses = {
     "available": "I am currently open to new opportunities and freelance projects! Use the contact form to reach out.",
     "process": "My design process follows: Research ➔ Wireframing ➔ Prototyping ➔ Testing ➔ Final Design.",
     "figma": "Figma is my primary tool for UI design and prototyping, but I'm also proficient in Adobe XD and Sketch.",
+    "education": "Joseph graduated from the University Of Cebu Lapu Lapu and Mandaue.",
+    "university": "Joseph is a proud graduate of the University Of Cebu Lapu Lapu and Mandaue (UCLM).",
     "default": "I'm not sure about that. Try asking about my skills, projects, contact info, or my design process!"
 };
 
