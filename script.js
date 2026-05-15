@@ -147,24 +147,7 @@ closeChatbot.addEventListener('click', () => {
     chatbotContainer.classList.remove('active');
 });
 
-// Responses
-const botResponses = {
-    "hello": "Hello! I'm Joseph's virtual assistant. How can I help you?",
-    "hi": "Hi there! Feel free to ask me about Joseph's skills, projects, or contact info.",
-    "skills": "Joseph is skilled in UI/UX Design, User Research, Wireframing, Prototyping, and uses tools like Figma, Adobe XD, and HTML/CSS.",
-    "projects": "Joseph has worked on exciting projects like EcoTrade, Dealogikal, and Knottical Power Energy. You can check them out in the Projects section!",
-    "contact": "You can email Joseph at Quisidojoseph23@gmail.com or call him at 09956705968.",
-    "experience": "Joseph has over 1 year of experience in digital product design.",
-    "resume": "You can view my background in the 'About' section, or contact me directly for a full PDF resume!",
-    "hobbies": "Outside of design, Joseph enjoys photography, digital art, and exploring the latest trends in technology and product design.",
-    "available": "I am currently open to new opportunities and freelance projects! Use the contact form to reach out.",
-    "process": "My design process follows: Research ➔ Wireframing ➔ Prototyping ➔ Testing ➔ Final Design.",
-    "figma": "Figma is my primary tool for UI design and prototyping, but I'm also proficient in Adobe XD and Sketch.",
-    "education": "Joseph graduated from the University Of Cebu Lapu Lapu and Mandaue.",
-    "university": "Joseph is a proud graduate of the University Of Cebu Lapu Lapu and Mandaue (UCLM).",
-    "default": "I'm not sure about that. Try asking about my skills, projects, contact info, or my design process!"
-};
-
+// Helper functions for Chatbot
 function addMessage(message, sender) {
     const msgDiv = document.createElement('div');
     msgDiv.classList.add('message');
@@ -184,7 +167,8 @@ function showTypingIndicator() {
     return indicator;
 }
 
-function handleSend(overrideText) {
+// Chatbot handleSend logic using Cloudflare Workers AI
+async function handleSend(overrideText) {
     const text = typeof overrideText === 'string' ? overrideText : chatbotInput.value.trim();
     if (text) {
         if (typeof overrideText !== 'string') {
@@ -196,20 +180,27 @@ function handleSend(overrideText) {
 
         const indicator = showTypingIndicator();
 
-        // Bot thinking delay
-        setTimeout(() => {
-            indicator.remove();
-            const lowerText = text.toLowerCase();
-            let response = botResponses["default"];
+        try {
+            // REPLACE THIS URL with your actual Cloudflare Worker URL from the dashboard
+            const WORKER_URL = "https://your-ai-assistant.your-username.workers.dev";
 
-            for (const key in botResponses) {
-                if (lowerText.includes(key)) {
-                    response = botResponses[key];
-                    break;
-                }
-            }
-            addMessage(response, 'bot');
-        }, 1000);
+            const response = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text })
+            });
+
+            if (!response.ok) throw new Error("Worker responded with an error");
+
+            const data = await response.json();
+            indicator.remove();
+            addMessage(data.response || "I'm thinking, but my words got stuck. Try asking again!", 'bot');
+
+        } catch (error) {
+            console.error("AI Error:", error);
+            indicator.remove();
+            addMessage("I'm currently resting my circuits. Please email Joseph directly or try again later!", 'bot');
+        }
     }
 }
 
