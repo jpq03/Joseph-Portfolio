@@ -285,7 +285,7 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
         const projectTitle = card.querySelector('h3').textContent;
         const data = projectData[projectTitle] || projectData["EcoTrade: Digital Barter Platform"];
-        
+
         modalBody.innerHTML = `
             <div class="modal-header">
                 <h2>${data.title}</h2>
