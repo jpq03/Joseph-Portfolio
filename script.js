@@ -181,8 +181,7 @@ async function handleSend(overrideText) {
         const indicator = showTypingIndicator();
 
         try {
-            // REPLACE THIS URL with your actual Cloudflare Worker URL from the dashboard
-            const WORKER_URL = "https://your-ai-assistant.your-username.workers.dev";
+            const WORKER_URL = "https://joseph.quisidojoseph24.workers.dev/";
 
             const response = await fetch(WORKER_URL, {
                 method: "POST",
