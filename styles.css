@@ -174,16 +174,80 @@ body {
     animation: fadeInUp 0.8s ease 0.4s both;
 }
 
-.hero-image img {
+.mockup-container {
+    position: relative;
     max-width: 100%;
-    height: auto;
     border-radius: 12px;
+    overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero-image img:hover {
+.mockup-container:hover {
     transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(6, 182, 212, 0.2);
+}
+
+.mockup-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.mockup-switcher {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 6px 10px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    width: max-content;
+}
+
+.switcher-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switcher-btn:hover {
+    color: var(--text-main);
+}
+
+.switcher-btn.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(6, 182, 212, 0.3);
+}
+
+@media (max-width: 480px) {
+    .mockup-switcher {
+        bottom: 10px;
+        padding: 4px 6px;
+        gap: 4px;
+    }
+    
+    .switcher-btn {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
 }
 
 .hero-content h1 {
@@ -332,6 +396,42 @@ body {
     transition: background-color 0.4s ease;
 }
 
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn:hover {
+    color: var(--text-main);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -346,7 +446,7 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
@@ -1125,6 +1225,33 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-top: 20px;
+}
+
+/* Modal CTA Action Buttons */
+.modal-footer-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.modal-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.modal-action-btn .btn-icon {
+    stroke-width: 2.5;
+    transition: transform 0.3s ease;
+}
+
+.modal-action-btn:hover .btn-icon {
+    transform: translateX(2px) translateY(-1px);
 }
 
 @media (max-width: 600px) {

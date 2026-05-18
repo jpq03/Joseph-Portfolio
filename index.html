@@ -69,7 +69,15 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/hero-mockup.png" alt="UI Mockup Composition">
+                <div class="mockup-container">
+                    <img id="hero-display-img" src="images/hero-mockup.png" alt="UI Mockup Composition">
+                    <div class="mockup-switcher">
+                        <button class="switcher-btn active" data-img="images/hero-mockup.png">Overview</button>
+                        <button class="switcher-btn" data-img="images/ecotrade_landing.png">EcoTrade</button>
+                        <button class="switcher-btn" data-img="images/dealogikal.png">Dealogikal</button>
+                        <button class="switcher-btn" data-img="images/knottical.png">Knottical</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -114,8 +122,16 @@
     <section id="projects" class="projects reveal">
         <div class="container">
             <h2>Featured Projects</h2>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX Design</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="ai">AI Integration</button>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-category="uiux web">
                     <div class="project-image">
                         <img src="images/ecotrade_landing.png" alt="EcoTrade Platform" class="project-thumbnail">
                     </div>
@@ -131,7 +147,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="uiux">
                     <div class="project-image">
                         <img src="images/dealogikal.png" alt="Dealogikal Platform" class="project-thumbnail">
                     </div>
@@ -145,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="web ai">
                     <div class="project-image">
                         <img src="images/knottical.png" alt="Knottical Dashboard" class="project-thumbnail">
                     </div>
